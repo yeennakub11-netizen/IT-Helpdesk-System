@@ -127,7 +127,7 @@
                             <th>สถานะ</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="ticketTableBody">
                         <!-- เนื้อหาในตาราง -->
                         <tr>
                             <td>#TK-1002</td>
@@ -156,6 +156,48 @@
         <!-- ส่วนท้ายเว็บไซต์ -->
         <p>&copy; 2026 IT Service Desk Application | พัฒนาโดย นายธิติวัฒน์ วิมลสุวโรจน์ (IT Support Portfolio Project)</p>
     </footer>
+
+    <script>
+    // 1. ดึงฟอร์มแจ้งซ่อมมาจากหน้าเว็บ
+    const form = document.getElementById('repairForm');
+
+    // 2. ดักจับเหตุการณ์เมื่อผู้ใช้กดปุ่มส่ง
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // ป้องกันไม่ให้หน้าเว็บรีเฟรช
+
+        // 3. ดึงค่าข้อมูลจากฟอร์มแต่ละช่อง
+        const name = document.getElementById('reporterName').value;
+        const dept = document.getElementById('department').value;
+        const device = document.getElementById('deviceType').value;
+        const title = document.getElementById('problemTitle').value;
+        const urgency = document.getElementById('urgency').value;
+
+        // 4. เลือกตาราง (tbody) ที่เราจะเอาข้อมูลไปใส่
+        const tableBody = document.getElementById('ticketTableBody');
+
+        // 5. สร้างแถวใหม่ (<tr>) สำหรับตาราง
+        const newRow = document.createElement('tr');
+
+        // 6. กำหนดหน้าตา HTML ด้านในแถวใหม่ โดยเอาข้อมูลที่ผู้ใช้กรอกมาใส่
+        newRow.innerHTML = `
+            <td>#TK-1003</td>
+            <td>${name} (${dept})</td>
+            <td>${device}</td>
+            <td>${title}</td>
+            <td><span class="badge badge-high">${urgency}</span></td>
+            <td><span class="status status-progress">⏳ รอดำเนินการ</span></td>
+        `;
+
+        // 7. นำแถวใหม่ไปต่อไว้ที่ "ด้านบนสุด" ของตาราง
+        tableBody.prepend(newRow);
+
+        // 8. ล้างข้อมูลในฟอร์มให้ว่าง พร้อมกรอกใหม่
+        form.reset();
+
+        // 9. แจ้งเตือนผู้ใช้ว่าส่งสำเร็จ
+        alert('บันทึกและส่งเรื่องแจ้งซ่อมสำเร็จ!');
+    });
+    </script>
 
 </body>
 </html>
