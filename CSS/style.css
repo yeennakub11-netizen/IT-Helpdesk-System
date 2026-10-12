@@ -1,0 +1,195 @@
+
+/* เลือกทุกองค์ประกอบในหน้าเว็บ เพื่อล้างค่าเริ่มต้น */
+* {
+    box-sizing: border-box; /* รวมขนาด padding และ border เข้ากับความกว้าง */
+    margin: 0;              /* ลบระยะห่างรอบนอกเริ่มต้น */
+    padding: 0;             /* ลบระยะห่างด้านในเริ่มต้น */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* กำหนดรูปแบบตัวอักษร */
+}
+
+/* กำหนดค่าพื้นฐานของหน้าเว็บ */
+body {
+    background-color: #f4f7f6; /* สีพื้นหลังเว็บเทาอ่อน */
+    color: #333;               /* สีตัวอักษรหลัก */
+    line-height: 1.6;          /* ระยะห่างระหว่างบรรทัด */
+}
+
+/* ตกแต่งส่วนหัว (Header) ของเว็บ */
+.app-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* ไล่เฉดสีน้ำเงิน */
+    color: #ffffff;            /* สีตัวอักษรในส่วนหัวเป็นสีขาว */
+    padding: 30px 20px;        /* ระยะห่างด้านใน (บน-ล่าง ซ้าย-ขวา) */
+    text-align: center;        /* จัดข้อความให้อยู่ตรงกลาง */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* ใส่เงาใต้แถบหัวเว็บ */
+}
+
+/* จัดตำแหน่งโลโก้และไอคอน */
+.brand {
+    display: flex;             /* จัดเรียงแบบยืดหยุ่น (Flexbox) */
+    justify-content: center;   /* จัดให้อยู่กึ่งกลางแนวนอน */
+    align-items: center;       /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    gap: 10px;                 /* ระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+.brand .icon {
+    font-size: 2.2rem;         /* ขนาดของไอคอน */
+}
+
+.subtitle {
+    font-weight: 300;          /* ความหนาของตัวอักษรแบบบาง */
+    opacity: 0.9;              /* ความโปร่งใส */
+    margin-top: 5px;           /* ระยะห่างจากด้านบน */
+}
+
+/* กรอบหลักสำหรับจัดกึ่งกลางเนื้อหาเว็บ */
+.main-container {
+    max-width: 950px;          /* ความกว้างสูงสุดของเนื้อหา */
+    margin: 30px auto;         /* จัดกึ่งกลางหน้าจอแนวนอน */
+    padding: 0 20px;           /* ระยะเว้นขอบซ้ายขวา */
+}
+
+/* ดีไซน์กล่องการ์ดสีขาว */
+.card-box {
+    background: #ffffff;       /* พื้นหลังสีขาว */
+    border-radius: 12px;       /* ความโค้งมนของมุมกล่อง */
+    padding: 30px;             /* ระยะห่างขอบด้านใน */
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06); /* เงาฟุ้งๆ รอบกล่อง */
+}
+
+.card-header {
+    margin-bottom: 25px;       /* ระยะห่างด้านล่าง */
+    border-bottom: 2px solid #eef2f5; /* เส้นคั่นใต้หัวข้อการ์ด */
+    padding-bottom: 15px;      /* ระยะห่างก่อนถึงเส้นคั่น */
+}
+
+.card-header h2 {
+    color: #1e3c72;            /* สีหัวข้อการ์ด */
+    font-size: 1.4rem;         /* ขนาดตัวอักษรหัวข้อ */
+}
+
+.card-header p {
+    color: #666;               /* สีข้อความคำอธิบาย */
+    font-size: 0.9rem;         /* ขนาดตัวอักษรคำอธิบาย */
+}
+
+/* จัดรูปแบบแถวของฟอร์ม */
+.form-row {
+    display: flex;             /* จัดเรียงช่องกรอกให้อยู่แนวนอนข้างกัน */
+    gap: 20px;                 /* ระยะห่างระหว่างช่อง */
+    margin-bottom: 15px;       /* ระยะห่างแถวด้านล่าง */
+}
+
+/* กลุ่มช่องกรอกข้อมูลแต่ละช่อง */
+.form-group {
+    flex: 1;                   /* ขยายขนาดให้เต็มพื้นที่ที่แบ่ง */
+    display: flex;
+    flex-direction: column;    /* เรียงป้ายชื่อกับช่องกรอกเป็นแนวตั้ง */
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: 600;          /* ความหนาของป้ายชื่อ */
+    font-size: 0.9rem;
+    margin-bottom: 6px;        /* ระยะห่างระหว่างป้ายชื่อกับช่องกรอก */
+    color: #444;
+}
+
+/* ตกแต่งช่องกรอกข้อมูล (Input, Select, Textarea) */
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 10px 14px;        /* ระยะพิมพ์ด้านในช่อง */
+    border: 1px solid #ccc;    /* สีเส้นขอบ */
+    border-radius: 6px;        /* ความโค้งมุมช่องกรอก */
+    font-size: 0.95rem;
+    outline: none;             /* เอาเส้นขอบสีฟ้าเวลาคลิกออก */
+    transition: border-color 0.2s ease; /* เอฟเฟกต์เปลี่ยนสีขอบนุ่มนวล */
+}
+
+/* เมื่อคลิกเข้าไปพิมพ์ในช่องกรอก */
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: #2a5298;     /* เปลี่ยนสีขอบเป็นสีน้ำเงิน */
+    box-shadow: 0 0 5px rgba(42, 82, 152, 0.2); /* เรืองแสงรอบช่อง */
+}
+
+/* ปุ่มกดส่งฟอร์ม */
+.btn-submit {
+    width: 100%;               /* ความกว้างเต็ม 100% */
+    background-color: #27ae60; /* พื้นหลังสีเขียว */
+    color: white;              /* ตัวหนังสือสีขาว */
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;              /* เอาขอบออก */
+    border-radius: 6px;        /* มุมโค้งมน */
+    cursor: pointer;           /* เปลี่ยนรูปเมาส์เป็นรูปมือ */
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+/* เมื่อเอาเมาส์ไปชี้ที่ปุ่มส่ง */
+.btn-submit:hover {
+    background-color: #219150; /* เปลี่ยนเป็นสีเขียวเข้มขึ้น */
+}
+
+/* รองรับตารางให้เลื่อนดูได้บนจอเล็ก */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* ตารางแสดงรายการ */
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse; /* ยุบเส้นขอบตารางให้ติดกัน */
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.ticket-table th, .ticket-table td {
+    padding: 12px 15px;
+    text-align: left;          /* จัดข้อความชิดซ้าย */
+    border-bottom: 1px solid #eee; /* เส้นคั่นแต่ละแถว */
+}
+
+.ticket-table th {
+    background-color: #f8f9fa; /* พื้นหลังหัวตารางสีเทาอ่อน */
+    color: #555;
+}
+
+/* ป้ายกำกับสถานะและความเร่งด่วน (Badge) */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.badge-high { background-color: #ffebee; color: #c62828; } /* สีแดงสำหรับงานด่วน */
+.badge-medium { background-color: #fff8e1; color: #f57f17; } /* สีเหลืองสำหรับงานปานกลาง */
+
+.status {
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.status-progress { color: #e67e22; } /* สีส้ม: กำลังดำเนินการ */
+.status-success { color: #27ae60; }  /* สีเขียว: สำเร็จ */
+
+/* ส่วนท้ายเว็บไซต์ (Footer) */
+.app-footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    font-size: 0.85rem;
+    margin-top: 40px;
+}
+
+/* Responsive: ถ้าหน้าจอมือถือมีความกว้างน้อยกว่า 600px */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column; /* เปลี่ยนช่องกรอกแนวนอนให้เรียงเป็นแนวตั้ง */
+        gap: 0;
+    }
+}

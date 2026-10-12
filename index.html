@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<!-- กำหนดประเภทเอกสารเป็น HTML5 -->
+<html lang="th">
+<!-- เปิดแท็กรากของเว็บไซต์ และกำหนดภาษาหลักเป็นภาษาไทย -->
+<head>
+    <meta charset="UTF-8">
+    <!-- กำหนดชุดตัวอักษรเป็น UTF-8 เพื่อรองรับภาษาไทย -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ตั้งค่าการแสดงผลให้รองรับหน้าืจอทุกขนาด (Responsive) -->
+    <title>IT Helpdesk System - ระบบแจ้งซ่อมอุปกรณ์ไอที</title>
+    <!-- ข้อความบนแท็บเบราว์เซอร์ -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <!-- ดึงไฟล์ตกแต่ง CSS ภายนอกมาใช้งาน -->
+</head>
+<body>
+    <!-- เปิดส่วนเนื้อหาทั้งหมดที่จะแสดงบนหน้าเว็บ -->
+
+    <!-- แถบ Header แสดงโลโก้ระบบ -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <span class="icon">💻</span>
+                <!-- ไอคอนคอมพิวเตอร์ -->
+                <h1>IT Service Desk</h1>
+                <!-- หัวข้อหลักของระบบ -->
+            </div>
+            <p class="subtitle">ระบบส่งเรื่องแจ้งซ่อมและติดตามสถานะอุปกรณ์ไอที</p>
+            <!-- คำอธิบายใต้หัวข้อ -->
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- เปิดส่วนเนื้อหาหลักของหน้า -->
+        
+        <!-- กล่องฟอร์มสำหรับแจ้งซ่อม -->
+        <section class="card-box">
+            <!-- สร้างกล่องการ์ดสีขาว -->
+            <div class="card-header">
+                <h2>🛠️ บันทึกแจ้งซ่อมอุปกรณ์ (Create Repair Ticket)</h2>
+                <p>กรอกรายละเอียดปัญหาอุปกรณ์คอมพิวเตอร์และระบบเครือข่าย เพื่อให้เจ้าหน้าที่ไอทีเข้าดำเนินการ</p>
+            </div>
+
+            <form class="ticket-form" id="repairForm">
+                <!-- เริ่มต้นฟอร์มสำหรับกรอกข้อมูล -->
+                <div class="form-row">
+                    <!-- จัดบรรทัดฟอร์มให้อยู่แนวนอน -->
+                    <div class="form-group">
+                        <label for="reporterName">ชื่อ-นามสกุล ผู้แจ้งปัญหา *</label>
+                        <!-- ป้ายชื่อช่องกรอกข้อมูล -->
+                        <input type="text" id="reporterName" name="reporterName" placeholder="เช่น นายสมชาย ใจดี" required>
+                        <!-- ช่องกรอกข้อความสั้น -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">แผนก / ฝ่าย *</label>
+                        <select id="department" name="department" required>
+                            <!-- ช่องเลือกตัวเลือก (Dropdown) -->
+                            <option value="">-- เลือกแผนก --</option>
+                            <option value="HR">ฝ่ายทรัพยากรบุคคล (HR)</option>
+                            <option value="Accounting">ฝ่ายการเงินและบัญชี</option>
+                            <option value="Marketing">ฝ่ายการตลาด</option>
+                            <option value="Operations">ฝ่ายปฏิบัติการ / ขนส่ง</option>
+                            <option value="IT">ฝ่ายไอที</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="deviceType">ประเภทอุปกรณ์ *</label>
+                        <select id="deviceType" name="deviceType" required>
+                            <option value="">-- เลือกประเภทอุปกรณ์ --</option>
+                            <option value="PC">คอมพิวเตอร์ตั้งโต๊ะ (PC)</option>
+                            <option value="Notebook">โน้ตบุ๊ก (Notebook)</option>
+                            <option value="Printer">เครื่องพิมพ์ / สแกนเนอร์ (Printer/Scanner)</option>
+                            <option value="Network">ระบบเครือข่าย / Wi-Fi / LAN</option>
+                            <option value="Other">อื่นๆ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="urgency">ระดับความเร่งด่วน *</label>
+                        <select id="urgency" name="urgency" required>
+                            <option value="Low">ปกติ (Low) - ดำเนินการภายใน 24 ชม.</option>
+                            <option value="Medium" selected>ปานกลาง (Medium) - ดำเนินการภายใน 12 ชม.</option>
+                            <option value="High">ด่วนมาก (High) - ดำเนินการทันที / กระทบงานหลัก</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="problemTitle">หัวข้อปัญหา *</label>
+                    <input type="text" id="problemTitle" name="problemTitle" placeholder="เช่น เปิดเครื่องไม่ติด, พิมพ์งานไม่ได้, อินเทอร์เน็ตหลุดบ่อย" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="problemDetail">รายละเอียดปัญหาเพิ่มเติม</label>
+                    <textarea id="problemDetail" name="problemDetail" rows="4" placeholder="ระบุอาการอย่างละเอียด หรือรหัสข้อผิดพลาด (Error Code) ที่ปรากฏบนหน้าจอ..."></textarea>
+                    <!-- ช่องกรอกข้อความขนาดยาวหลายบรรทัด -->
+                </div>
+
+                <button type="submit" class="btn-submit">🚀 ส่งเรื่องแจ้งซ่อม (Submit Ticket)</button>
+                <!-- ปุ่มกดส่งข้อมูลฟอร์ม -->
+            </form>
+        </section>
+
+        <!-- กล่องจำลองตารางติดตามสถานะงานซ่อม -->
+        <section class="card-box" style="margin-top: 30px;">
+            <div class="card-header">
+                <h2>📋 รายการแจ้งซ่อมล่าสุด (Recent Tickets)</h2>
+                <p>ตัวอย่างการติดตามสถานะงานซ่อมในระบบ</p>
+            </div>
+
+            <div class="table-responsive">
+                <!-- ทำให้ตารางเลื่อนดูได้บนมือถือ -->
+                <table class="ticket-table">
+                    <!-- เริ่มต้นสร้างตาราง -->
+                    <thead>
+                        <!-- หัวตาราง -->
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>ผู้แจ้ง</th>
+                            <th>อุปกรณ์</th>
+                            <th>อาการเสีย</th>
+                            <th>ความเร่งด่วน</th>
+                            <th>สถานะ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- เนื้อหาในตาราง -->
+                        <tr>
+                            <td>#TK-1002</td>
+                            <td>คุณสมศักดิ์ (HR)</td>
+                            <td>Notebook</td>
+                            <td>เครื่องค้าง หน้าจอขึ้น Blue Screen</td>
+                            <td><span class="badge badge-high">ด่วนมาก</span></td>
+                            <td><span class="status status-progress">⏳ กำลังซ่อมแซม</span></td>
+                        </tr>
+                        <tr>
+                            <td>#TK-1001</td>
+                            <td>คุณวิภา (บัญชี)</td>
+                            <td>Printer</td>
+                            <td>กระดาษติดในเครื่อง พิมพ์เอกสารไม่ได้</td>
+                            <td><span class="badge badge-medium">ปานกลาง</span></td>
+                            <td><span class="status status-success">✅ ซ่อมเสร็จสิ้น</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="app-footer">
+        <!-- ส่วนท้ายเว็บไซต์ -->
+        <p>&copy; 2026 IT Service Desk Application | พัฒนาโดย นายธิติวัฒน์ วิมลสุวโรจน์ (IT Support Portfolio Project)</p>
+    </footer>
+
+</body>
+</html>
